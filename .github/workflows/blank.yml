@@ -47,7 +47,7 @@ jobs:
       # Start FastAPI server
       - name: Start FastAPI server
         run: |
-          uvicorn client_loan_prediction.app.main:app --host 0.0.0.0 --port 8000
+          uvicorn app.main:app --host 0.0.0.0 --port 8000
 
       # Wait
       - name: Wait for FastAPI server to start
