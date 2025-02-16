@@ -23,7 +23,8 @@ jobs:
     services:
       api:
         image: python:3.12
-        ports: - 8000:8OOO
+        ports:
+        - 8000:8OOO
         options: --name api
 
     # Steps represent a sequence of tasks that will be executed as part of the job
