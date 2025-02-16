@@ -34,19 +34,20 @@ jobs:
 
       # Set up python
       - name: Set up Python
-        run: actions/setup-python@v2
-        with: python-version: 3.12
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.12
 
       # Install requirements
       - name: Install dependancies
         run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       # Start FastAPI server
       - name: Start FastAPI server
         run: |
-        uvicorn app.main:app --host 0.0.0.0 --port 8000 &
+          uvicorn app.main:app --host 0.0.0.0 --port 8000 &
 
       # Wait
       - name: Wait for FastAPI server to start
@@ -54,7 +55,7 @@ jobs:
           until curl http://127.0.0.1:8000/; do 
             echo "Waiting for FastAPI server to start ... "
             sleep 2
-        done
+          done
 
       # Run the tests
       - name: Run tests
