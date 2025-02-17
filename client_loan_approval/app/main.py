@@ -11,7 +11,7 @@ from pydantic import BaseModel, Field
 from .model import load_model
 
 # PATH to the model.pkl
-model_path = "model/model.pkl"
+model_path = "../model/model.pkl"
 
 # Loading the model
 model = load_model(model_path)
