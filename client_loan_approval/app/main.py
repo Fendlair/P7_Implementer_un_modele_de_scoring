@@ -6,8 +6,8 @@ Created on Tue Feb 11 10:37:21 2025
 @author: etienne
 """
 
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel, Field
+from fastapi import FastAPI, HTTPException, Request
+from pydantic import BaseModel, Field, ValidationError
 from .model import load_model
 
 # PATH to the model.pkl
@@ -40,10 +40,10 @@ def predict(request: PredictionRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail="Erreur lors de la prédiction.")
 
-# Define a function to return a description of the app
+# Function to return a description of the app
 def get_app_description():
 	return (
-    	"Welcome to the Client loan aprouval API!"
+    	"Welcome to the Client loan approval API!"
     	"This API allows you to determine if we should allow a credit to a client based on some data."
     	"Use the '/predict/' endpoint with a POST request to make predictions."
     	"Example usage: POST to '/predict/' with JSON data containing"
@@ -53,3 +53,8 @@ def get_app_description():
 @app.get("/")
 async def root():
 	return {"message": get_app_description()}
+
+# Middleware pour gérer les erreurs de validation
+@app.exception_handler(ValidationError)
+async def validation_exception_handler(request: Request, exc: ValidationError):
+    return JSONResponse(status_code=422, content={"detail": exc.errors()})

@@ -23,7 +23,7 @@ class TestPredictionAPI(unittest.TestCase):
         }
 
         # Input data (Containing a string)
-        invalid_data = {
+        str_data = {
             "features": ["etienne", -3287, 0.76, 0.0, 6.0, 0.0, 0.0, -2118.0, -1480.0, 0.0, 0.0, 0.0, 1.0, -109.0, 11.43]
         }
 
@@ -33,7 +33,7 @@ class TestPredictionAPI(unittest.TestCase):
         self.assertIsInstance(response.json()["probability"], float)
 
         # Test data with numerical and str data
-        response = requests.post(API_URL, json=invalid_data)
+        response = requests.post(API_URL, json=str_data)
         self.assertEqual(response.status_code, 422)  # Error code for invalide data
         
     # Testing length of input data
