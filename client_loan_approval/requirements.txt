@@ -9,3 +9,8 @@ pyyaml==6.0.1
 scikit-learn==1.5.2
 scipy==1.13.1
 xgboost==2.1.1
+fastapi
+uvicorn
+requests
+pydantic
+joblib
