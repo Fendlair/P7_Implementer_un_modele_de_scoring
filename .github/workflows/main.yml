@@ -33,6 +33,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r client_loan_approval/requirements.txt
 
+    - name: Verify model file exists
+      run: |
+        if [ ! -f "client_loan_approval/model/model.pkl" ]; then
+          echo "Model file not found!"
+          exit 1
+        fi
+
     - name: Start FastAPI server
       run: |
         export PYTHONPATH=$PYTHONPATH:$(pwd)/client_loan_approval
