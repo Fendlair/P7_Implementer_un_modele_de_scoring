@@ -3,6 +3,7 @@ import streamlit as st
 import requests
 import json
 
+feature_names = ['DAYS_BIRTH', 'DAYS_ID_PUBLISH', 'EXT_SOURCE_2', 'AMT_REQ_CREDIT_BUREAU_QRT', 'AMT_REQ_CREDIT_BUREAU_YEAR', 'NAME_FAMILY_STATUS_Single / not married', 'WEEKDAY_APPR_PROCESS_START_MONDAY', 'BURO_DAYS_CREDIT_MIN', 'BURO_DAYS_CREDIT_MAX', 'BURO_CREDIT_DAY_OVERDUE_MEAN', 'BURO_CNT_CREDIT_PROLONG_SUM', 'BURO_CREDIT_TYPE_Microloan_MEAN', 'BURO_STATUS_0_MEAN_MEAN', 'PREV_DAYS_DECISION_MAX', 'PREV_CNT_PAYMENT_MEAN']
 
 def request_prediction(model_uri, data):
     headers = {"Content-Type": "application/json"}
@@ -14,10 +15,11 @@ def request_prediction(model_uri, data):
     else:
         st.error(f"Request failed with status: {response.status_code} - ||{response.text}")
         return None
-st.image("banner.png")
+
 def main():
     FASTAPI_URI = 'http://127.0.0.1:8000/predict/'
 
+    st.image("banner.png")
     st.title('Client Loan Approval')
 
     day_birth = st.number_input("Client's age in days at the time of application",
@@ -84,6 +86,15 @@ def main():
                     st.success(f"Le pret pour le client est ACCEPTE")
             else:
                     st.warning(f"Le prêt pour le client est REFUSE")
-                    
+            # Displaying advantage and issuues with client application
+            shap_values = zip(feature_names, pred["shap_values"])
+            shap_table = pd.DataFrame(shap_values, columns=["Information", "Weight"])
+            shap_table = shap_table.sort_values(by="Weight")
+            st.info("The informations good for the client are:")
+            st.dataframe(shap_table.head(3))
+            
+            st.info("The informations bad for the client are:")
+            st.dataframe(shap_table.sort_values(by="Weight", ascending=False).head(3))
+
 if __name__ == '__main__':
     main()
