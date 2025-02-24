@@ -54,8 +54,6 @@ def predict(request: PredictionRequest):
         # Shap values calculation
         shap_values = explainer(pipeline.named_steps["scaler"].transform([features]))
         shap_values_list = shap_values.values[0].tolist()
-        print(prediction_proba)
-        print("shap_values:", shap_values_list)
 
         return PredictionResponse(probability=prediction_proba[1], shap_values=shap_values_list)
 
