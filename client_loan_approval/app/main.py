@@ -5,7 +5,7 @@ Created on Tue Feb 11 10:37:21 2025
 
 @author: etienne
 """
-
+import os
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel, Field, ValidationError
 from .model import load_model
@@ -83,3 +83,7 @@ async def root():
 async def validation_exception_handler(request: Request, exc: ValidationError):
     logger.error(f"Erreur de validation: {exc}")
     return JSONResponse(status_code=422, content={"detail": exc.errors()})
+
+if __name__== "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
