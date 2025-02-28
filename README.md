@@ -6,10 +6,6 @@
 - [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
 - [Utilisation](#utilisation)
-- [Tests Unitaires](#tests-unitaires)
-- [CI/CD avec GitHub Actions](#cicd-avec-github-actions)
-- [Contribuer](#contribuer)
-- [Licence](#licence)
 
 ## Description
 

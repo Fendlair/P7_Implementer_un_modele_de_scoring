@@ -17,7 +17,7 @@ def request_prediction(model_uri, data):
         return None
 
 def main():
-    FASTAPI_URI = "http://127.0.0.1:8000/predict/"
+    FASTAPI_URI = "http://p7-implementer-un-modele-de-scoring.onrender.com/predict/"
 
     st.image("banner.png")
     st.title("Client Loan Approval")
@@ -70,20 +70,20 @@ def main():
         pred = None
         pred = request_prediction(FASTAPI_URI, features)
         if pred:
-            st.info(f"The probability that the client will repay their loan is: {pred["probability"]:.2f}")
+            st.info(f"The probability that the client will not repay their loan is: {pred['probability']:.2f}")
             threshold = 0.4
-            predicted_class = 1 if pred["probability"] < threshold else 0
+            predicted_class = 1 if pred["probability"] > threshold else 0
             if predicted_class == 0:
-                    st.success(f"Based on the data; the loan is ACCEPTED")
+                    st.success("Based on the data; the loan is ACCEPTED")
             else:
-                    st.warning(f"Based on the data, the loan is REFUSED")
+                    st.warning("Based on the data, the loan is REFUSED")
             # Displaying advantage and issuues with client application
             shap_values = zip(feature_names, pred["shap_values"])
             shap_table = pd.DataFrame(shap_values, columns=["Information", "Weight"])
             shap_table = shap_table.sort_values(by="Weight")
-            st.info("The pieces of information that are not good for the client are:")
-            st.dataframe(shap_table.head(3))
             st.info("The pieces of information that are good for the client are:")
+            st.dataframe(shap_table.head(3))
+            st.info("The pieces of information that are not good for the client are:")
             st.dataframe(shap_table.sort_values(by="Weight", ascending=False).head(3))
 
 if __name__ == "__main__":
