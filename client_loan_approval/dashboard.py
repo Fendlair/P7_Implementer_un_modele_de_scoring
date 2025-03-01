@@ -33,7 +33,7 @@ def main():
     amt_req_credit_bureau_year = st.number_input("Number of enquiries to Credit Bureau about the client one day year (excluding last 3 months before application): AMT_REQ_CREDIT_BUREAU_YEAR", min_value=0, value=10, step=1)
 
     name_family_status = st.selectbox(
-        "Family status: NAME_FAMILY_STATUS_Single / not married", ["Single", "Married"])
+        "Family status: NAME_FAMILY_STATUS_Single / not married", ["Yes", "No"])
 
     weekday_appr_process_start_monday = st.selectbox("Did the client previous application was on a Monday: WEEKDAY_APPR_PROCESS_START_MONDAY", ["No", "Yes"])
 
@@ -62,7 +62,7 @@ def main():
                                 min_value=0., value=0., step=1.)
 
     if st.button("Predict"):
-        name_family_status = 0 if name_family_status == "Married" else 1
+        name_family_status = 1 if name_family_status == "Yes" else 0
         weekday_appr_process_start_monday = 1 if weekday_appr_process_start_monday == "Yes" else 0
     
         features = [day_birth, days_id_publish, ext_source_2, amt_req_credit_bureau_qtr, amt_req_credit_bureau_year, name_family_status, weekday_appr_process_start_monday, buro_days_credit_min, buro_days_credit_max, buro_credit_day_overdue_mean, buro_cnt_credit_prolong_sum, buro_credit_type_microloan_mean, buro_status_0_mean_mean, prev_days_decision_max, prev_cnt_payment_mean]
