@@ -5,7 +5,7 @@
 - [Description](#description)
 - [Fonctionnalités](#fonctionnalités)
 - [Installation](#installation)
-- [Utilisation](#utilisation)
+- [Structure](#structure)
 
 ## Description
 
@@ -18,9 +18,30 @@ Ce projet est une API de prédiction de l'approbation de prêts clients. L'API u
 - Tests unitaires pour vérifier les entrées et les réponses de l'API.
 - Intégration continue avec GitHub Actions pour exécuter les tests automatiquement.
 
-## Installation
+## Copier le projet
 
-1. Clonez le dépôt :
+Clonez le dépôt :
 
    ```bash
    git clone https://github.com/Fendlair/P7_Implementer_un_modele_de_scoring
+```
+
+## Structure des fichiers
+
+client_loan_approval/
+│
+├── app/
+│   ├── __init__.py        # Fichier d'initialisation du package
+│   ├── main.py            # Point d'entrée principal de l'API FastAPI
+│   └── model.py           # Fichier contenant les fonctions de chargement du modèle
+│   
+├── model/
+│   └── model.pkl          # Fichier du modèle (pipeline)
+│
+├── dashboard.py           # Fichier contenant le code du dashboard Streamlit
+│
+├── banner.png             # Image intégrée au dashboard
+│
+├── requirements.txt       # Fichier listant les dépendances Python du projet
+│
+└── README.md              # Fichier d'explication de l'organisation des fichiers
