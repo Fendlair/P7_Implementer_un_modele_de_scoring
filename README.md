@@ -24,7 +24,7 @@ Clonez le dépôt :
 
    ```bash
    git clone https://github.com/Fendlair/P7_Implementer_un_modele_de_scoring
-```
+   ```
 
 ## Structure des fichiers
 
