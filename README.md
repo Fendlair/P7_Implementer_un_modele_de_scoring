@@ -15,6 +15,7 @@ Ce projet est une API de prédiction de l'approbation de prêts clients. L'API u
 
 - Prédiction de l'approbation de prêts clients basée sur des caractéristiques spécifiques.
 - Retourne la probabilité de remboursement du client.
+- Retourne la liste de feature importance pour le client.
 - Tests unitaires pour vérifier les entrées et les réponses de l'API.
 - Intégration continue avec GitHub Actions pour exécuter les tests automatiquement.
 
@@ -36,7 +37,7 @@ client_loan_approval/
 │   └── model.py           # Fichier contenant les fonctions de chargement du modèle
 │
 ├── model/
-│   └── model.pkl          # Fichier du modèle sérialisé (pipeline)
+│   └── model.pkl          # Fichier du modèle (pipeline: RobustScaler + XGboost)
 │
 ├── dashboard.py           # Fichier contenant le code du dashboard Streamlit
 │
