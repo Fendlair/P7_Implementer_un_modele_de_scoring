@@ -28,9 +28,10 @@ Clonez le dépôt :
 
 ## Structure des fichiers
 
+```
 client_loan_approval/
 ├── app/
-│   ├── init.py        # Fichier d'initialisation du package
+│   ├── init.py            # Fichier d'initialisation du package
 │   ├── main.py            # Point d'entrée principal de l'API FastAPI
 │   └── model.py           # Fichier contenant les fonctions de chargement du modèle
 │
@@ -42,3 +43,4 @@ client_loan_approval/
 ├── requirements.txt       # Fichier listant les dépendances Python du projet
 │
 └── README.md              # Fichier d'explication de l'organisation des fichiers (ce fichier)
+```
