@@ -29,19 +29,16 @@ Clonez le dépôt :
 ## Structure des fichiers
 
 client_loan_approval/
-│
 ├── app/
-│   ├── __init__.py        # Fichier d'initialisation du package
+│   ├── init.py        # Fichier d'initialisation du package
 │   ├── main.py            # Point d'entrée principal de l'API FastAPI
 │   └── model.py           # Fichier contenant les fonctions de chargement du modèle
-│   
+│
 ├── model/
-│   └── model.pkl          # Fichier du modèle (pipeline)
+│   └── model.pkl          # Fichier du modèle sérialisé (pipeline)
 │
 ├── dashboard.py           # Fichier contenant le code du dashboard Streamlit
 │
-├── banner.png             # Image intégrée au dashboard
-│
 ├── requirements.txt       # Fichier listant les dépendances Python du projet
 │
-└── README.md              # Fichier d'explication de l'organisation des fichiers
+└── README.md              # Fichier d'explication de l'organisation des fichiers (ce fichier)
