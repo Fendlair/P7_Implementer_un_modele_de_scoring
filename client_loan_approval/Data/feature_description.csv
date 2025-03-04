@@ -1,0 +1,16 @@
+Feature,Description
+DAYS_BIRTH,Client's age in days at the time of application
+EXT_SOURCE_2,Normalized score from external data source 2
+PREV_DAYS_DECISION_MAX,Relative to current application when was the decision about previous application made
+BURO_DAYS_CREDIT_MAX,How many days before current application did client apply for Credit Bureau credit for the first time
+BURO_DAYS_CREDIT_MIN,How many days before current application did client apply for Credit Bureau credit for the last time
+PREV_CNT_PAYMENT_MEAN,Mean of term of previous credit at application of the previous application
+DAYS_ID_PUBLISH,How many days before the application did client change the identity document with which he applied for the loan
+AMT_REQ_CREDIT_BUREAU_YEAR,Number of enquiries to Credit Bureau about the client one day year (excluding last 3 months before application)
+BURO_STATUS_0_MEAN_MEAN,Mean of status of Credit Bureau loan during the month
+BURO_CREDIT_TYPE_Microloan_MEAN,Mean of previous micro loan
+WEEKDAY_APPR_PROCESS_START_MONDAY,Did the client previous application was on a Monday
+AMT_REQ_CREDIT_BUREAU_QRT,Number of enquiries to Credit Bureau about the client 3 month before application (excluding one month before application)
+BURO_CREDIT_DAY_OVERDUE_MEAN,Number of mean days past due on CB credit at the time of application for related loan in our sample
+NAME_FAMILY_STATUS_Single / not married,Is the client single ?
+BURO_CNT_CREDIT_PROLONG_SUM,How many times was the Credit Bureau credits prolonged
