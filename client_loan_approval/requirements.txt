@@ -1,4 +1,3 @@
-pip
 cloudpickle
 lz4
 numpy
@@ -18,4 +17,4 @@ shap
 streamlit
 plotly
 streamviz
-json
+json5
