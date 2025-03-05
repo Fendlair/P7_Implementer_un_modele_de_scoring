@@ -15,4 +15,5 @@ pydantic
 joblib
 shap
 streamlit
-
+streamviz
+json
