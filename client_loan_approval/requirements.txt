@@ -7,6 +7,7 @@ psutil
 pyyaml
 scikit-learn
 scipy
+matplotlib
 xgboost
 fastapi
 uvicorn
