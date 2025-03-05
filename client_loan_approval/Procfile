@@ -1,0 +1,5 @@
+# Commande de démarrage pour l'API
+web: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+
+# Commande de démarrage pour le dashboard
+web: streamlit run dashboard.py
