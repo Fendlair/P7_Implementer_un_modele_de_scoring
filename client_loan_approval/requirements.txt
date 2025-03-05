@@ -16,5 +16,6 @@ pydantic
 joblib
 shap
 streamlit
+plotly
 streamviz
 json
