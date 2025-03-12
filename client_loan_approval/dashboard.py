@@ -264,6 +264,7 @@ def main():
 
     st.divider()
     st.title("Strengths and Weaknesses in client informations regarding the prediction model")
+    
     # Histogram plot of shap values
     global_shap_values = load_data()
     shap_data = global_shap_values.merge(
@@ -271,6 +272,7 @@ def main():
     )
     shap_data = shap_data.sort_values("Model value", ascending=False)
     shap_data["Client value"] = shap_data["Client value"].abs()
+    
     # data_shap = global_shap_values.
     fig, ax = plt.subplots()
     ax.hlines(
@@ -316,7 +318,7 @@ def main():
 
     # colors of clients depending of target
     colors = {0: "#06006c", 1: "#ffb24a"}
-    labels = {0: "Good client", 1: "Bad client"}
+    labels = {0: "Responsible borrowers", 1: "challenged customers"}
     pattern = {0: "x", 1: "/"}
     
     # Display selected feature and how the client is compare to others
@@ -333,6 +335,8 @@ def main():
             }
     ax2.annotate("Client", xy=(feature_dict[feature1], ax2.axis()[3]), **kwargs)
     ax2.set_title("Distribution of " + feature1, fontsize=20, pad=20)
+    ax2.set_xlabel(feature1, fontsize=16)
+    ax2.set_ylabel("Number of clients", fontsize=16)
     ax2.legend(fontsize=14)
     st.pyplot(fig2)
 
@@ -346,6 +350,8 @@ def main():
         ax3.scatter(subset[feature1], subset[feature2], alpha= 0.5, s=20, color=colors[customer_type], label=labels[customer_type], marker=markers[customer_type])
     ax3.plot(feature_dict[feature1], feature_dict[feature2], marker="o", markersize=10, color="#ff5876", label="Client")
     ax3.set_title("Scatter plot of " + feature1 + " versus " + feature2, fontsize=20, pad=10)
+    ax3.set_xlabel(feature1, fontsize=16)
+    ax3.set_ylabel(feature2, fontsize=16)
     ax3.legend(fontsize=14)
     st.pyplot(fig3)
 
